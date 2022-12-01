@@ -10,7 +10,7 @@ const HeaderComponent: React.FC = () => {
       <Col flexBasis={'20%'} maxWidth={'20%'}>
         <SortComponent />
       </Col>
-      <Col flexBasis={'78%'} maxWidth={'78%'}>
+      <Col flexBasis={'76%'} maxWidth={'76%'}>
         <SearchComponent />
       </Col>
     </Row>

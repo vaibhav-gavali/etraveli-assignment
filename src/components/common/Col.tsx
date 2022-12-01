@@ -6,6 +6,7 @@ interface Props {
   maxWidth?: number | string;
   fullWidth?: boolean;
   colClassName?: string | undefined;
+  flexGrow?: number;
 }
 
 const Col: React.FC<Props> = (props) => {
@@ -14,6 +15,7 @@ const Col: React.FC<Props> = (props) => {
     maxWidth = 'auto',
     fullWidth = false,
     colClassName = '',
+    flexGrow = 0,
     children,
   } = props;
 
@@ -22,10 +24,11 @@ const Col: React.FC<Props> = (props) => {
     maxWidth,
     width: fullWidth ? '100%' : 'auto',
     colClassName,
+    flexGrow,
   };
 
   return (
-    <div className={`col ${colClassName}`} style={{ flexGrow: 0, ...styles }}>
+    <div className={`col ${colClassName}`} style={{ ...styles }}>
       {children}
     </div>
   );

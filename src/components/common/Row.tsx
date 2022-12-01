@@ -27,6 +27,7 @@ interface Props {
     | 'initial'
     | 'inherit';
   rowClassName?: string | undefined;
+  fullWidth?: boolean;
 }
 
 const Row: React.FC<Props> = (props) => {
@@ -36,12 +37,15 @@ const Row: React.FC<Props> = (props) => {
     flexDirection,
     rowClassName = '',
     children,
+    fullWidth,
   } = props;
+
   const styles = {
     alignItems,
     justifyContent,
     flexDirection,
     rowClassName,
+    width: fullWidth ? '100%' : 'auto',
   };
 
   return (

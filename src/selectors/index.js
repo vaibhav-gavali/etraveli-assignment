@@ -2,12 +2,12 @@ import { createSelector } from 'reselect';
 
 export const headerStateSelector = (state) => state.headerStore;
 
-export const getSearchvalueSelector = createSelector(
+export const getSearchValueSelector = createSelector(
   headerStateSelector,
   (headerState) => headerState.searchBy || ''
 );
 
-export const getSortvalueSelector = createSelector(
+export const getSortValueSelector = createSelector(
   headerStateSelector,
   (headerState) => headerState.sortBy || ''
 );

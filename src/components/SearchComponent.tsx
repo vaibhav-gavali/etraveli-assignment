@@ -1,11 +1,11 @@
 import React from 'react';
 import { Row } from './common';
 import { MdSearch } from 'react-icons/md';
-import './SearchComponent.scss';
-import { getSearchvalueSelector } from '../selectors';
+import { getSearchValueSelector } from '../selectors';
 import { actions } from '../reducers/headerReducer';
 import { connect } from 'react-redux';
 import { CommonActionsType } from '../model';
+import './SearchComponent.scss';
 
 interface Props {
   searchValue: string;
@@ -29,7 +29,7 @@ const SearchComponent: React.FC<Props> = (props) => {
 };
 
 const mapStateToProps = (state: any) => ({
-  searchValue: getSearchvalueSelector(state),
+  searchValue: getSearchValueSelector(state),
 });
 
 const mapDispatchToProps = {
