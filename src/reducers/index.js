@@ -1,8 +1,10 @@
-import headerReducer from './headerReducer';
 import { combineReducers } from 'redux';
+import headerReducer from './headerReducer';
+import movieReducer from './movieReducer';
 
 const combinedReducer = combineReducers({
   headerStore: headerReducer,
+  movieStore: movieReducer,
   // ... all your app's reducers
 });
 

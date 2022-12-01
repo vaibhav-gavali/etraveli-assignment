@@ -55,7 +55,7 @@
       cursor: pointer;
 
       &:hover {
-        background-color: #ddd;
+        background-color: var(--lightGray-color);
       }
 
       .checked {

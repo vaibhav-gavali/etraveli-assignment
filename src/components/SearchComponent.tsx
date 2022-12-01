@@ -9,7 +9,7 @@ import './SearchComponent.scss';
 
 interface Props {
   searchValue: string;
-  setSearchBy: CommonActionsType['actions'];
+  setSearchBy: CommonActionsType['actionsWithPayload'];
 }
 
 const SearchComponent: React.FC<Props> = (props) => {

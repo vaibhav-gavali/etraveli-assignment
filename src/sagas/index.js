@@ -1,7 +1,7 @@
 import { all, fork } from 'redux-saga/effects';
 
-// import * as headerSagas from './headerSaga';
+import * as movieSagas from './movieSaga';
 
 export default function* rootSaga() {
-  // yield all([...Object.values()].map(fork));
+  yield all([...Object.values(movieSagas)].map(fork));
 }

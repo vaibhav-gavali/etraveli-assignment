@@ -4,7 +4,6 @@ import {
 } from '@reduxjs/toolkit/dist/createAction';
 
 export interface CommonActionsType {
-  actions:
-    | ActionCreatorWithPayload<any, `${string}/${string}`>
-    | ActionCreatorWithoutPayload<`${string}/${string}`>;
+  actionsWithPayload: ActionCreatorWithPayload<any, `${string}/${string}`>;
+  actionsWithoutPayloadload: ActionCreatorWithoutPayload<`${string}/${string}`>;
 }

@@ -21,7 +21,7 @@ const SORT_OPTIONS = [
 
 interface Props {
   sortValue: string;
-  setSortBy: CommonActionsType['actions'];
+  setSortBy: CommonActionsType['actionsWithPayload'];
 }
 
 const SortComponent: React.FC<Props> = (props) => {
