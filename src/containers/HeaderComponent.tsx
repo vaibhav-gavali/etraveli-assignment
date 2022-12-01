@@ -6,11 +6,11 @@ import './HeaderComponent.scss';
 
 const HeaderComponent: React.FC = () => {
   return (
-    <Row justifyContent="space-between">
-      <Col flexBasis={'49%'} maxWidth={'49%'}>
+    <Row justifyContent="space-between" rowClassName="header-wrapper">
+      <Col flexBasis={'20%'} maxWidth={'20%'}>
         <SortComponent />
       </Col>
-      <Col flexBasis={'49%'} maxWidth={'49%'}>
+      <Col flexBasis={'78%'} maxWidth={'78%'}>
         <SearchComponent />
       </Col>
     </Row>

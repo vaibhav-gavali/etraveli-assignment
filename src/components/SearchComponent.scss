@@ -1,0 +1,22 @@
+.search-wrapper {
+  .input-wrapper {
+    width: 100%;
+    position: relative;
+    .icon {
+      position: absolute;
+      top: 2px;
+      left: 2px;
+    }
+    input {
+      border: 0;
+      outline: 0;
+      border-radius: 3px;
+      width: 100%;
+      padding-left: 20px;
+      box-sizing: border-box;
+    }
+    input:focus {
+      outline: none;
+    }
+  }
+}
