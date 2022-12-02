@@ -1,4 +1,4 @@
-import { cleanup, screen, fireEvent, within } from '@testing-library/react';
+import { cleanup, screen } from '@testing-library/react';
 import { initialState as movieInitialState } from '../../reducers/movieReducer';
 import { getMoviesList } from '../../utils/test-resource.rsc';
 import { renderWithProviders } from '../../utils/test-util';
