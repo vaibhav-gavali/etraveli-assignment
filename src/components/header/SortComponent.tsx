@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import { Row } from './common';
+import { Row } from '../common';
 import { MdClose, MdCheck } from 'react-icons/md';
 import { connect } from 'react-redux';
-import { getSortValueSelector } from '../selectors';
-import { actions } from '../reducers/headerReducer';
-import { CommonActionsType } from '../model';
+import { getSortValueSelector } from '../../selectors';
+import { actions } from '../../reducers/headerReducer';
+import { CommonActionsType } from '../../model';
 
 import './SortComponent.scss';
 

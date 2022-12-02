@@ -1,12 +1,14 @@
 import React from 'react';
 
 interface Props {
-  children?: JSX.Element[] | JSX.Element;
+  children?: any;
   flexBasis?: number | 'auto' | 'initial' | 'inherit' | string;
   maxWidth?: number | string;
   fullWidth?: boolean;
   colClassName?: string | undefined;
   flexGrow?: number;
+  styles?: React.CSSProperties | undefined;
+  onClick?: React.MouseEventHandler<HTMLDivElement> | undefined;
 }
 
 const Col: React.FC<Props> = (props) => {
@@ -17,9 +19,11 @@ const Col: React.FC<Props> = (props) => {
     colClassName = '',
     flexGrow = 0,
     children,
+    styles,
+    onClick,
   } = props;
 
-  const styles = {
+  const customStyles = {
     flexBasis,
     maxWidth,
     width: fullWidth ? '100%' : 'auto',
@@ -28,7 +32,11 @@ const Col: React.FC<Props> = (props) => {
   };
 
   return (
-    <div className={`col ${colClassName}`} style={{ ...styles }}>
+    <div
+      className={`col ${colClassName}`}
+      style={{ ...customStyles, ...styles }}
+      onClick={onClick}
+    >
       {children}
     </div>
   );

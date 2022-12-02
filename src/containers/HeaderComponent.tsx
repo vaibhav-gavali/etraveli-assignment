@@ -1,7 +1,8 @@
 import React from 'react';
-import SearchComponent from '../components/SearchComponent';
-import SortComponent from '../components/SortComponent';
+
 import { Row, Col } from '../components/common';
+import SearchComponent from '../components/header/SearchComponent';
+import SortComponent from '../components/header/SortComponent';
 import './HeaderComponent.scss';
 
 const HeaderComponent: React.FC = () => {

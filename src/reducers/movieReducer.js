@@ -5,6 +5,7 @@ const MOVIE_STATE = 'movie';
 const initialState = {
   list: [],
   isLoading: false,
+  currentMovieIndex: null,
 };
 
 //Create this to use in Sagas
@@ -26,6 +27,9 @@ export const movieSlice = createSlice({
     setMovieListFailure: (state) => {
       state.list = [];
       state.isLoading = false;
+    },
+    selectSingleMovie: (state, action) => {
+      state.currentMovieIndex = action.payload;
     },
   },
 });

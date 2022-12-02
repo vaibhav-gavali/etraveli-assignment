@@ -1,10 +1,10 @@
 import React from 'react';
-import { Row } from './common';
+import { Row } from '../common';
 import { MdSearch } from 'react-icons/md';
-import { getSearchValueSelector } from '../selectors';
-import { actions } from '../reducers/headerReducer';
+import { getSearchValueSelector } from '../../selectors';
+import { actions } from '../../reducers/headerReducer';
 import { connect } from 'react-redux';
-import { CommonActionsType } from '../model';
+import { CommonActionsType } from '../../model';
 import './SearchComponent.scss';
 
 interface Props {

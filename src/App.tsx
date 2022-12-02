@@ -12,6 +12,7 @@ interface Props {
 
 const App: React.FC<Props> = (props) => {
   const { getMovieList } = props;
+
   useEffect(() => {
     getMovieList();
   }, []);

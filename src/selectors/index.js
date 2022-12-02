@@ -17,3 +17,8 @@ export const movieListSelector = createSelector(
   movieStateSelector,
   (movieState) => movieState.list || []
 );
+
+export const currentMovieSelector = createSelector(
+  movieStateSelector,
+  (movieState) => movieState.currentMovieIndex || 0
+);

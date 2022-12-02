@@ -1,15 +1,15 @@
 import React from 'react';
-import MovieDetailsComponent from '../components/MovieDetailsComponent';
-import MoviesListComponent from '../components/MoviesListComponent';
+import MovieDetailsComponent from '../components/movie/MovieDetailsComponent';
+import MoviesListComponent from '../components/movie/MoviesListComponent';
 import { Row, Col } from '../components/common';
 
 const MovieListComponent: React.FC = () => {
   return (
-    <Row justifyContent="space-between">
-      <Col flexBasis={'49%'} maxWidth={'49%'}>
+    <Row justifyContent="space-between" styles={{ height: '100%' }}>
+      <Col flexBasis={'50%'} maxWidth={'50%'}>
         <MoviesListComponent />
       </Col>
-      <Col flexBasis={'49%'} maxWidth={'49%'}>
+      <Col flexBasis={'50%'} maxWidth={'50%'}>
         <MovieDetailsComponent />
       </Col>
     </Row>

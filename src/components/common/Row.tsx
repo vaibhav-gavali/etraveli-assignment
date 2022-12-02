@@ -28,6 +28,8 @@ interface Props {
     | 'inherit';
   rowClassName?: string | undefined;
   fullWidth?: boolean;
+  styles?: React.CSSProperties | undefined;
+  onClick?: React.MouseEventHandler<HTMLDivElement> | undefined;
 }
 
 const Row: React.FC<Props> = (props) => {
@@ -38,9 +40,11 @@ const Row: React.FC<Props> = (props) => {
     rowClassName = '',
     children,
     fullWidth,
+    styles,
+    onClick,
   } = props;
 
-  const styles = {
+  const customStyles = {
     alignItems,
     justifyContent,
     flexDirection,
@@ -51,7 +55,8 @@ const Row: React.FC<Props> = (props) => {
   return (
     <div
       className={`row ${rowClassName}`}
-      style={{ display: 'flex', ...styles }}
+      style={{ display: 'flex', ...customStyles, ...styles }}
+      onClick={onClick}
     >
       {children}
     </div>
