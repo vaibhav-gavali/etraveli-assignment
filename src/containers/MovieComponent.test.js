@@ -5,7 +5,6 @@ import { renderWithProviders } from '../utils/test-util';
 import MovieComponent from './MovieComponent';
 import { initialState as movieInitialState } from '../reducers/movieReducer';
 
-// Reset any runtime request handlers we may add during the tests.
 afterEach(() => cleanup());
 
 describe('MovieComponent Unit Tests', () => {

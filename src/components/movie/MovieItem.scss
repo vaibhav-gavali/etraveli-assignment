@@ -1,8 +1,12 @@
 .item-wrapper {
   border-bottom: 1px solid var(--lightGray-color);
-  padding: 10px 15px;
+  padding: 20px 15px;
   cursor: pointer;
   box-sizing: border-box;
+
+  &:hover {
+    background-color: var(--primary-color);
+  }
 
   &.no-border {
     border-bottom: none;

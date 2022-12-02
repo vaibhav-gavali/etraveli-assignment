@@ -8,10 +8,10 @@ afterEach(() => cleanup());
 
 describe('SortComponent Unit Tests', () => {
   test('Sort options are showing correctly', () => {
-    const initialMovieState = { ...headerInitialState };
+    const initialHeaderState = { ...headerInitialState };
     renderWithProviders(<SortComponent />, {
       preloadedState: {
-        headerStore: initialMovieState,
+        headerStore: initialHeaderState,
       },
     });
 
@@ -22,10 +22,10 @@ describe('SortComponent Unit Tests', () => {
 
   ['episode_id', 'release_date'].forEach((option) => {
     test(`Sort option is showing a checked icon if ${option} selected`, () => {
-      const initialMovieState = { ...headerInitialState, sortBy: option };
+      const initialHeaderState = { ...headerInitialState, sortBy: option };
       renderWithProviders(<SortComponent />, {
         preloadedState: {
-          headerStore: initialMovieState,
+          headerStore: initialHeaderState,
         },
       });
 

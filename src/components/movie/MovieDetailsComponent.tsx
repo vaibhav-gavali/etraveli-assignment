@@ -33,7 +33,7 @@ const MovieDetailsComponent: React.FC<Props> = (props) => {
       styles={!movieSelected ? stylesForEmptyCondition : {}}
     >
       {movieSelected ? (
-        <Row flexDirection="column">
+        <Row flexDirection="column" data-testid="movie-details">
           <h2>{title}</h2>
           <p className="details">{opening_crawl}</p>
           <div className="director">Directed by: {director}</div>
