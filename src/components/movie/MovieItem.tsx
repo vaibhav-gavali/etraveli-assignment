@@ -18,8 +18,6 @@ const MovieItem: React.FC<Props> = (props) => {
   const { movie, selectSingleMovie } = props;
   const { title, episode_id, release_date } = movie;
 
-  console.log('release date', release_date, new Date(release_date));
-
   return (
     <Row
       fullWidth
@@ -27,12 +25,18 @@ const MovieItem: React.FC<Props> = (props) => {
       onClick={() => selectSingleMovie(episode_id)}
       alignItems="center"
       justifyContent="center"
+      data-testid="movie-item"
     >
-      <Col colClassName="episode">{`EPISODE ${episode_id}`}</Col>
+      <Col
+        colClassName="episode"
+        data-testid="movie-episodeId"
+      >{`EPISODE ${episode_id}`}</Col>
       <Col flexGrow={1} colClassName="title">
         {title}
       </Col>
-      <Col colClassName="date">{release_date}</Col>
+      <Col colClassName="date" data-testid="movie-releaseDate">
+        {release_date}
+      </Col>
     </Row>
   );
 };

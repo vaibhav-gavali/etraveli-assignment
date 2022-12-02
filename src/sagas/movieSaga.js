@@ -11,7 +11,6 @@ function* getMoviesSaga() {
       axios.get,
       `https://swapi.dev/api/films/?format=json`
     );
-    console.log(movies);
     yield put(setMovieListSuccess(movies.data.results));
   } catch (e) {
     yield put(setMovieListFailure());
