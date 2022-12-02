@@ -2,12 +2,6 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Project Screenshots
-
-### View when movie list is empty
-
-![stage 1](src/screenshots/stage-1.png)
-
 ## Available Scripts
 
 In the project directory, you can run:
