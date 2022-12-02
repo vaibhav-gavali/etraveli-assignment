@@ -21,6 +21,7 @@ const Col: React.FC<Props> = (props) => {
     children,
     styles,
     onClick,
+    ...restProps
   } = props;
 
   const customStyles = {
@@ -36,6 +37,7 @@ const Col: React.FC<Props> = (props) => {
       className={`col ${colClassName}`}
       style={{ ...customStyles, ...styles }}
       onClick={onClick}
+      {...restProps}
     >
       {children}
     </div>

@@ -42,6 +42,7 @@ const Row: React.FC<Props> = (props) => {
     fullWidth,
     styles,
     onClick,
+    ...restProps
   } = props;
 
   const customStyles = {
@@ -57,6 +58,7 @@ const Row: React.FC<Props> = (props) => {
       className={`row ${rowClassName}`}
       style={{ display: 'flex', ...customStyles, ...styles }}
       onClick={onClick}
+      {...restProps}
     >
       {children}
     </div>

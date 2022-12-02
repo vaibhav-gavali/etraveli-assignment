@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const MOVIE_STATE = 'movie';
 
-const initialState = {
+export const initialState = {
   list: [],
   isLoading: false,
   currentMovieIndex: null,

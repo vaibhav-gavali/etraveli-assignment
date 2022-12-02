@@ -19,6 +19,7 @@ const MovieComponent: React.FC<Props> = (props) => {
         justifyContent="center"
         alignItems="center"
         styles={{ margin: '20px 0px' }}
+        data-testid={'movie-loading'}
       >
         <Loader />
       </Row>
@@ -26,7 +27,11 @@ const MovieComponent: React.FC<Props> = (props) => {
   }
 
   return (
-    <Row justifyContent="space-between" styles={{ height: '100%' }}>
+    <Row
+      justifyContent="space-between"
+      styles={{ height: '100%' }}
+      data-testid={'movie-loaded'}
+    >
       <Col flexBasis={'50%'} maxWidth={'50%'}>
         <MoviesListComponent />
       </Col>
