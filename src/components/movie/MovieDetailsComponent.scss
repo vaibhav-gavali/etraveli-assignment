@@ -1,0 +1,13 @@
+.details-wrapper {
+  padding: 20px;
+  border-left: 1px solid var(--lightGray-color);
+
+  h2 {
+    margin: 0px;
+  }
+
+  .director,
+  .details {
+    color: var(--gray-color);
+  }
+}

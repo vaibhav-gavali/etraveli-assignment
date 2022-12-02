@@ -1,6 +1,6 @@
 import React from 'react';
 import { Row } from '../common';
-import { movieListSelector } from '../../selectors';
+import { filteredMoviesSelector } from '../../selectors';
 import { actions } from '../../reducers/movieReducer';
 import { connect } from 'react-redux';
 import { CommonActionsType } from '../../model';
@@ -20,19 +20,38 @@ interface Props {
 const MoviesListComponent: React.FC<Props> = (props) => {
   const { list, selectSingleMovie } = props;
 
+  const stylesForEmptyCondition = {
+    height: '100%',
+    justifyContent: 'center',
+    alignItems: 'center',
+  };
+
+  const noMovies = list.length === 0;
+
   return (
-    <Row flexDirection="column">
-      {list.map((movie) => {
-        return (
-          <MovieItem movie={movie} selectSingleMovie={selectSingleMovie} />
-        );
-      })}
+    <Row
+      flexDirection="column"
+      styles={noMovies ? stylesForEmptyCondition : {}}
+    >
+      {!noMovies ? (
+        list.map((movie) => {
+          return (
+            <MovieItem
+              key={movie.episode_id}
+              movie={movie}
+              selectSingleMovie={selectSingleMovie}
+            />
+          );
+        })
+      ) : (
+        <h3>No Movie(s) Found</h3>
+      )}
     </Row>
   );
 };
 
 const mapStateToProps = (state: any) => ({
-  list: movieListSelector(state),
+  list: filteredMoviesSelector(state),
 });
 
 const mapDispatchToProps = {

@@ -18,6 +18,8 @@ const MovieItem: React.FC<Props> = (props) => {
   const { movie, selectSingleMovie } = props;
   const { title, episode_id, release_date } = movie;
 
+  console.log('release date', release_date, new Date(release_date));
+
   return (
     <Row
       fullWidth

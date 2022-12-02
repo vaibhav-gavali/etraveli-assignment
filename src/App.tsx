@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { connect } from 'react-redux';
 import './App.scss';
 import HeaderComponent from './containers/HeaderComponent';
-import MovieListComponent from './containers/MovieListComponent';
+import MovieComponent from './containers/MovieComponent';
 import { CommonActionsType } from './model';
 import { actions } from './reducers/movieReducer';
 
@@ -15,12 +15,12 @@ const App: React.FC<Props> = (props) => {
 
   useEffect(() => {
     getMovieList();
-  }, []);
+  });
 
   return (
     <div className="App">
       <HeaderComponent />
-      <MovieListComponent />
+      <MovieComponent />
     </div>
   );
 };

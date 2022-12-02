@@ -20,6 +20,7 @@ const SearchComponent: React.FC<Props> = (props) => {
         <MdSearch className="icon" />
         <input
           type="text"
+          placeholder="Type to search..."
           value={searchValue}
           onChange={(e) => setSearchBy(e.target.value)}
         />
