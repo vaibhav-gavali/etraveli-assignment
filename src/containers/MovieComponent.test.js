@@ -17,7 +17,6 @@ describe('MovieComponent Unit Tests', () => {
       },
     });
 
-    // should show no user initially, and not be fetching a user
     expect(screen.getByTestId('movie-loading')).toBeInTheDocument();
   });
 
@@ -29,7 +28,6 @@ describe('MovieComponent Unit Tests', () => {
       },
     });
 
-    // should show no user initially, and not be fetching a user
     expect(screen.getByTestId('movie-loaded')).toBeInTheDocument();
   });
 });

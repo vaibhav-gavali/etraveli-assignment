@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const HEADER_STATE = 'header';
 
-const initialState = {
+export const initialState = {
   sortBy: '',
   searchBy: '',
 };

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Row } from '../common';
 import { MdClose, MdCheck } from 'react-icons/md';
 import { connect } from 'react-redux';
@@ -8,7 +8,7 @@ import { CommonActionsType } from '../../model';
 
 import './SortComponent.scss';
 
-const SORT_OPTIONS = [
+export const SORT_OPTIONS = [
   {
     label: 'Episode',
     value: 'episode_id',
@@ -26,15 +26,14 @@ interface Props {
 
 const SortComponent: React.FC<Props> = (props) => {
   const { sortValue, setSortBy } = props;
-
   const [showDropdown, setShowDropdown] = useState(false);
-  console.log('showDropdown', showDropdown);
 
   return (
     <div className="dropdown">
       <button
         onClick={() => setShowDropdown(!showDropdown)}
         className="dropbtn"
+        data-testid="drop-btn"
       >
         Sort by...
       </button>
@@ -56,7 +55,9 @@ const SortComponent: React.FC<Props> = (props) => {
                 setShowDropdown(false);
               }}
             >
-              {sortValue === option.value && <MdCheck className="checked" />}
+              {sortValue === option.value && (
+                <MdCheck data-testid="checked" className="checked" />
+              )}
               {option.label}
             </div>
           ))}
