@@ -1,4 +1,4 @@
-import { cleanup, screen, fireEvent, within } from '@testing-library/react';
+import { cleanup, screen, within } from '@testing-library/react';
 import { getMoviesList } from '../../utils/test-resource.rsc';
 import { renderWithProviders } from '../../utils/test-util';
 import MoviesListComponent from './MoviesListComponent';
