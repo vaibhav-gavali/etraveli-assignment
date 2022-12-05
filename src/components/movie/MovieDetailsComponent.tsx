@@ -1,5 +1,5 @@
 import React from 'react';
-import { Row } from '../common';
+import { Row, Modal } from '../common';
 import { currentMovieDetailsSelector } from '../../selectors';
 import { connect } from 'react-redux';
 import './MovieDetailsComponent.scss';
@@ -33,10 +33,17 @@ const MovieDetailsComponent: React.FC<Props> = (props) => {
       styles={!movieSelected ? stylesForEmptyCondition : {}}
     >
       {movieSelected ? (
-        <Row flexDirection="column" data-testid="movie-details">
-          <h2>{title}</h2>
-          <p className="details">{opening_crawl}</p>
-          <div className="director">Directed by: {director}</div>
+        <Row data-testid="movie-details">
+          <Row flexDirection="column">
+            <h2>{title}</h2>
+            <p className="details">{opening_crawl}</p>
+            <div className="director">Directed by: {director}</div>
+          </Row>
+          <Row>
+            <Modal shouldShow={false}>
+              <h1>Hello</h1>
+            </Modal>
+          </Row>
         </Row>
       ) : (
         <h3>No Movie Selected</h3>

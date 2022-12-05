@@ -1,12 +1,8 @@
-import { useState } from 'react';
-import { Row } from '../common';
-import { MdClose, MdCheck } from 'react-icons/md';
+import { Select } from '../common';
 import { connect } from 'react-redux';
 import { getSortValueSelector } from '../../selectors';
 import { actions } from '../../reducers/headerReducer';
 import { CommonActionsType } from '../../model';
-
-import './SortComponent.scss';
 
 export const SORT_OPTIONS = [
   {
@@ -26,44 +22,15 @@ interface Props {
 
 const SortComponent: React.FC<Props> = (props) => {
   const { sortValue, setSortBy } = props;
-  const [showDropdown, setShowDropdown] = useState(false);
-
   return (
-    <div className="dropdown">
-      <button
-        onClick={() => setShowDropdown(!showDropdown)}
-        className="dropbtn"
-        data-testid="drop-btn"
-      >
-        Sort by...
-      </button>
-      <Row
-        flexDirection="column"
-        rowClassName={`dropdown-content ${showDropdown ? 'show' : ''}`}
-      >
-        <Row fullWidth rowClassName={`content-header`}>
-          <div style={{ flexGrow: 1 }}>Sort by</div>
-          <MdClose className="icon" onClick={() => setShowDropdown(false)} />
-        </Row>
-        <Row flexDirection="column" fullWidth>
-          {SORT_OPTIONS.map((option) => (
-            <div
-              className="optionItem"
-              key={option.value}
-              onClick={() => {
-                setSortBy(option.value);
-                setShowDropdown(false);
-              }}
-            >
-              {sortValue === option.value && (
-                <MdCheck data-testid="checked" className="checked" />
-              )}
-              {option.label}
-            </div>
-          ))}
-        </Row>
-      </Row>
-    </div>
+    <Select
+      options={SORT_OPTIONS}
+      handleSelectClick={(value) => {
+        setSortBy(value);
+      }}
+      value={sortValue}
+      headerTitle="Sort by"
+    />
   );
 };
 

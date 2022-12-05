@@ -13,16 +13,34 @@ describe('Selectors Unit Tests', () => {
     const output2 = filteredMoviesSelector.resultFunc(
       getMoviesList(),
       'episode_id',
-      ''
+      '',
+      'title'
     );
     const output3 = filteredMoviesSelector.resultFunc(
       getMoviesList(),
       'episode_id',
-      're'
+      're',
+      'title'
+    );
+
+    const output4 = filteredMoviesSelector.resultFunc(
+      getMoviesList(),
+      'episode_id',
+      'George',
+      'director'
+    );
+
+    const output5 = filteredMoviesSelector.resultFunc(
+      getMoviesList(),
+      'episode_id',
+      'Gary Kurtz',
+      'producer'
     );
 
     expect(output1.length).toBe(6);
     expect(output2.length).toBe(6);
     expect(output3.length).toBe(3);
+    expect(output4.length).toBe(4);
+    expect(output5.length).toBe(2);
   });
 });

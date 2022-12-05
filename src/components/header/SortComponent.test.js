@@ -16,8 +16,8 @@ describe('SortComponent Unit Tests', () => {
     });
 
     fireEvent.click(screen.getByTestId('drop-btn'));
-    expect(screen.getByText('Episode')).toBeInTheDocument();
-    expect(screen.getByText('Year')).toBeInTheDocument();
+    expect(screen.getAllByText('Episode').length).toBeGreaterThan(0);
+    expect(screen.getAllByText('Year').length).toBeGreaterThan(0);
   });
 
   ['episode_id', 'release_date'].forEach((option) => {
@@ -32,7 +32,11 @@ describe('SortComponent Unit Tests', () => {
       const label = SORT_OPTIONS.find((item) => item.value === option)?.label;
 
       fireEvent.click(screen.getByTestId('drop-btn'));
-      const element = screen.getByText(label);
+
+      // Get respective container
+      const containerElement = screen.getByTestId('drop-list-wrapper');
+      // Search by label
+      const element = within(containerElement).getByText(label);
       expect(element).toBeInTheDocument();
 
       const checked = within(element).getAllByTestId('checked');

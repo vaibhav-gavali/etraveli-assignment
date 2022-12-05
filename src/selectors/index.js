@@ -8,6 +8,11 @@ export const getSearchValueSelector = createSelector(
   (headerState) => headerState.searchBy || ''
 );
 
+export const getFilterValueSelector = createSelector(
+  headerStateSelector,
+  (headerState) => headerState.filterBy || ''
+);
+
 export const getSortValueSelector = createSelector(
   headerStateSelector,
   (headerState) => headerState.sortBy || ''
@@ -39,12 +44,13 @@ export const filteredMoviesSelector = createSelector(
   movieListSelector,
   getSortValueSelector,
   getSearchValueSelector,
-  (list, sortValue, searchValue) => {
+  getFilterValueSelector,
+  (list, sortValue, searchValue, filterValue) => {
     let newList = [...list];
 
     if (searchValue) {
       newList = newList.filter((movie) =>
-        movie.title.toLowerCase().includes(searchValue.toLowerCase())
+        movie[filterValue].toLowerCase().includes(searchValue.toLowerCase())
       );
     }
 

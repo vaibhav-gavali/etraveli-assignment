@@ -3,8 +3,9 @@ import { createSlice } from '@reduxjs/toolkit';
 const HEADER_STATE = 'header';
 
 export const initialState = {
-  sortBy: '',
+  sortBy: 'episode_id',
   searchBy: '',
+  filterBy: 'title',
 };
 
 export const headerSlice = createSlice({
@@ -16,6 +17,9 @@ export const headerSlice = createSlice({
     },
     setSearchBy: (state, action) => {
       state.searchBy = action.payload;
+    },
+    setFilterBy: (state, action) => {
+      state.filterBy = action.payload;
     },
   },
 });
