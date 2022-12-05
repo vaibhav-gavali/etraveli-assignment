@@ -39,7 +39,10 @@ const SearchComponent: React.FC<Props> = (props) => {
       <Col flexBasis={'20%'} maxWidth={'20%'}>
         <Select
           options={FILTER_OPTIONS}
-          handleSelectClick={(value) => setFilterBy(value)}
+          handleSelectClick={(value) => {
+            setFilterBy(value);
+            setSearchBy('');
+          }}
           value={filterValue}
           headerTitle="Filter by"
         />
