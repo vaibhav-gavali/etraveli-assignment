@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Row, Modal } from '../common';
 import { currentMovieDetailsSelector } from '../../selectors';
 import { connect } from 'react-redux';
 import './MovieDetailsComponent.scss';
+import SingleMovieDetails from './SingleMovieDetails';
 
 type Movie = {
   title: string;
@@ -23,6 +24,7 @@ const stylesForEmptyCondition = {
 const MovieDetailsComponent: React.FC<Props> = (props) => {
   const { currentMovie } = props;
   const { title, opening_crawl, director } = currentMovie;
+  const [showModal, setShowModal] = useState(false);
 
   const movieSelected = Object.keys(currentMovie).length > 0;
 
@@ -33,15 +35,27 @@ const MovieDetailsComponent: React.FC<Props> = (props) => {
       styles={!movieSelected ? stylesForEmptyCondition : {}}
     >
       {movieSelected ? (
-        <Row data-testid="movie-details">
+        <Row data-testid="movie-details" flexDirection="column">
           <Row flexDirection="column">
             <h2>{title}</h2>
             <p className="details">{opening_crawl}</p>
             <div className="director">Directed by: {director}</div>
           </Row>
-          <Row>
-            <Modal shouldShow={false}>
-              <h1>Hello</h1>
+          <Row rowClassName="modal-wrapper">
+            <button
+              className="more-details"
+              onClick={() => {
+                setShowModal(!showModal);
+              }}
+            >
+              Show Characters Details
+            </button>
+            <Modal
+              shouldShow={showModal}
+              onRequestClose={() => setShowModal(false)}
+              headerLabel="Characters Details"
+            >
+              <SingleMovieDetails />
             </Modal>
           </Row>
         </Row>

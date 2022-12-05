@@ -63,3 +63,13 @@ export const filteredMoviesSelector = createSelector(
     return newList;
   }
 );
+
+export const charactersListSelector = createSelector(
+  movieStateSelector,
+  (movieState) => movieState.charactersList || []
+);
+
+export const charactersLoadingSelector = createSelector(
+  movieStateSelector,
+  (movieState) => movieState.charactersLoading || false
+);

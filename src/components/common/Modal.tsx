@@ -1,5 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
+import Row from './Row';
+import { MdClose } from 'react-icons/md';
 
 const ModalBackground = styled.div`
   position: fixed;
@@ -24,16 +26,25 @@ interface Props {
   children: any;
   shouldShow: boolean;
   onRequestClose?: () => void;
+  headerLabel?: string;
 }
 
-const Modal: React.FC<Props> = ({ shouldShow, onRequestClose, children }) => {
+const Modal: React.FC<Props> = ({
+  shouldShow,
+  onRequestClose,
+  children,
+  headerLabel,
+}) => {
   return shouldShow ? (
     <ModalBackground onClick={onRequestClose}>
       <ModalBody
         onClick={(e: React.MouseEvent<HTMLInputElement>) => e.stopPropagation()}
       >
-        <button onClick={onRequestClose}>Hide Modal</button>
-        {children}
+        <Row styles={{ marginBottom: 20 }} justifyContent="space-between">
+          <div style={{ fontWeight: 'bold', fontSize: 24 }}>{headerLabel}</div>
+          <MdClose className="icon" onClick={onRequestClose} />
+        </Row>
+        <Row fullWidth>{children}</Row>
       </ModalBody>
     </ModalBackground>
   ) : null;

@@ -1,9 +1,16 @@
-import { call, put, takeLatest } from 'redux-saga/effects';
+import { call, put, takeLatest, select } from 'redux-saga/effects';
 import { actions, types } from '../reducers/movieReducer';
 import axios from 'axios';
+import { currentMovieDetailsSelector } from '../selectors';
 
-const { setMovieListSuccess, setMovieListFailure } = actions;
-const { GET_MOVIE_LIST } = types;
+const {
+  setMovieListSuccess,
+  setMovieListFailure,
+  setMovieCharactersSuccess,
+  setMovieCharactersFailure,
+} = actions;
+
+const { GET_MOVIE_LIST, GET_MOVIE_CHARACTERS } = types;
 
 function* getMoviesSaga() {
   try {
@@ -17,8 +24,36 @@ function* getMoviesSaga() {
   }
 }
 
+const getAllCharactersUrl = (characters = []) => {
+  return characters.map((characterURL) => axios.get(characterURL));
+};
+
+function* getMovieSpecificCharactersSaga() {
+  const currentMovie = yield select(currentMovieDetailsSelector);
+
+  if (currentMovie?.characters.length > 0) {
+    const getAllUrls = yield getAllCharactersUrl(currentMovie?.characters);
+    try {
+      const characters = yield call(axios.all, getAllUrls);
+      const filteredData = characters.map((obj) => {
+        return {
+          ...obj.data,
+        };
+      });
+
+      yield put(setMovieCharactersSuccess(filteredData));
+    } catch (e) {
+      yield put(setMovieCharactersFailure());
+    }
+  }
+}
+
 function* watchGetMovies() {
   yield takeLatest(GET_MOVIE_LIST, getMoviesSaga);
 }
 
-export { watchGetMovies };
+function* watchGetMovieCharacters() {
+  yield takeLatest(GET_MOVIE_CHARACTERS, getMovieSpecificCharactersSaga);
+}
+
+export { watchGetMovies, watchGetMovieCharacters };
