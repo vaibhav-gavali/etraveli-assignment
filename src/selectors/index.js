@@ -28,6 +28,11 @@ export const movieListLoadingSelector = createSelector(
   (movieState) => movieState.isLoading || false
 );
 
+export const movieListLoadedSelector = createSelector(
+  movieStateSelector,
+  (movieState) => movieState.listLoaded || false
+);
+
 export const currentMovieIndexSelector = createSelector(
   movieStateSelector,
   (movieState) => movieState.currentMovieIndex || 0
@@ -72,4 +77,9 @@ export const charactersListSelector = createSelector(
 export const charactersLoadingSelector = createSelector(
   movieStateSelector,
   (movieState) => movieState.charactersLoading || false
+);
+
+export const charactersLoadedSelector = createSelector(
+  movieStateSelector,
+  (movieState) => movieState.charactersLoaded || false
 );

@@ -3,11 +3,14 @@ import { Col, Row } from '../common';
 import {
   charactersLoadingSelector,
   charactersListSelector,
+  charactersLoadedSelector,
 } from '../../selectors';
 import { actions } from '../../reducers/movieReducer';
 import { connect } from 'react-redux';
 import { CommonActionsType } from '../../model';
 import Loader from '../common/Loader';
+import { OnLoad } from '../../hoc';
+import { compose } from 'redux';
 
 type Character = {
   name: string;
@@ -20,15 +23,12 @@ type Character = {
 interface Props {
   charactersList: Character[];
   charactersLoading: boolean;
-  getMovieCharacters: CommonActionsType['actionsWithoutPayloadload'];
+  load: CommonActionsType['actionsWithoutPayloadload'];
+  loaded: boolean;
 }
 
 const SingleMovieDetails: React.FC<Props> = (props) => {
-  const { charactersList, charactersLoading, getMovieCharacters } = props;
-
-  useEffect(() => {
-    getMovieCharacters();
-  }, []);
+  const { charactersList, charactersLoading } = props;
 
   if (charactersLoading) {
     return (
@@ -113,10 +113,14 @@ const SingleMovieDetails: React.FC<Props> = (props) => {
 const mapStateToProps = (state: any) => ({
   charactersList: charactersListSelector(state),
   charactersLoading: charactersLoadingSelector(state),
+  loaded: charactersLoadedSelector(state),
 });
 
 const mapDispatchToProps = {
-  getMovieCharacters: actions.getMovieCharacters,
+  load: actions.getMovieCharacters,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(SingleMovieDetails);
+export default compose(
+  connect(mapStateToProps, mapDispatchToProps),
+  OnLoad
+)(SingleMovieDetails);

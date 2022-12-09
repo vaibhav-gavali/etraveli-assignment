@@ -13,6 +13,7 @@ describe('movieReducer Unit Tests', () => {
     expect(movieReducer(initialState, setMovieListSuccess(moviesList))).toEqual(
       {
         ...initialState,
+        listLoaded: true,
         list: moviesList,
       }
     );

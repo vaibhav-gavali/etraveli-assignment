@@ -5,10 +5,12 @@ const MOVIE_STATE = 'movie';
 export const initialState = {
   list: [],
   isLoading: false,
+  listLoaded: false,
   currentMovieIndex: null,
 
   charactersList: [],
   charactersLoading: false,
+  charactersLoaded: false,
 };
 
 //Create this to use in Sagas
@@ -30,6 +32,7 @@ export const movieSlice = createSlice({
     setMovieListSuccess: (state, action) => {
       state.list = action.payload;
       state.isLoading = false;
+      state.listLoaded = true;
     },
     setMovieListFailure: (state) => {
       state.list = [];
@@ -37,6 +40,7 @@ export const movieSlice = createSlice({
     },
     selectSingleMovie: (state, action) => {
       state.currentMovieIndex = action.payload;
+      state.charactersLoaded = false;
     },
 
     getMovieCharacters: (state) => {
@@ -45,6 +49,7 @@ export const movieSlice = createSlice({
     setMovieCharactersSuccess: (state, action) => {
       state.charactersList = action.payload;
       state.charactersLoading = false;
+      state.charactersLoaded = true;
     },
     setMovieCharactersFailure: (state) => {
       state.charactersList = [];
